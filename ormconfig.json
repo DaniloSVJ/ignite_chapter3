@@ -5,6 +5,10 @@
     "password": "ignite",
     "database":"rentx22",
     "migrations": ["./src/databases/migrations/*.ts"],
+    "entities": [
+        "./src/modules/**/entities/*.ts"
+      ],
+  
     "cli": {
         "migrationsDir": "./src/databases/migrations"
     }

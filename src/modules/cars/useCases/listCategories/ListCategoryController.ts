@@ -1,5 +1,6 @@
 import {Request ,Response } from "express"
 import { ListCategoriesUseCase } from "./ListCategoryUseCase"
+
 import {container} from "tsyringe" 
 
 class ListCategoryController {

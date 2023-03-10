@@ -20,7 +20,7 @@ services:
     ports: 
       - 3333:3333
     volumes:
-      - .:/url/app  
+      - .:/usr/app
     links:
       - database_ignite22
     depends_on: 

@@ -22,7 +22,7 @@ class User{
     @Column()
     driver_license: string
 
-    @Column("boolean")
+    @Column()
     isAdmin: boolean
 
     
