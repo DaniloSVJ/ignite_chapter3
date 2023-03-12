@@ -6,7 +6,7 @@ export class CreateCategories1678295819976 implements MigrationInterface {
         await queryRunner.createTable(
             new Table(
                 {
-                    name: "Categories",
+                    name: "categories",
                     columns: [
                         {
                             name:"id",
