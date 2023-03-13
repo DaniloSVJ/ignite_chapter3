@@ -10,7 +10,7 @@ class ImportCategoryController{
 
         const {file} = request
         const importCategoryUseCase = await container.resolve(ImportCategoryUseCase)
-        importCategoryUseCase.execute(file)
+        await importCategoryUseCase.execute(file)
         return response.send()
     }
 }

@@ -29,7 +29,7 @@ class CreateCategoryUseCases{
             throw new Error( "Category Already exists!")
         }
     
-        this.categoriesRepository.create({name,description})
+        await this.categoriesRepository.create({name,description})
     }
 
 }
