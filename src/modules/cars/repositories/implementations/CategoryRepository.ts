@@ -23,7 +23,7 @@ implements ICategoriesRepository {
             name
         })
     
-        await this.repository.save(category)
+        this.repository.save(category)
        
     
     }

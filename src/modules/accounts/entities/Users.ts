@@ -23,6 +23,8 @@ class User{
     @Column()
     isAdmin: boolean
 
+    @Column()
+    avatar:string
     
     @CreateDateColumn()
     create_at: Date
