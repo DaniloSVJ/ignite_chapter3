@@ -1,5 +1,6 @@
-import { AppError } from "src/errors/AppError";
-import { CateogoriesRepositoriesInMemory } from "../../repositories/in-memory/CateogoriesRepositoriesInMemory";
+import "reflect-metadata"
+import { AppError } from "@shared/errors/AppError";
+import { CateogoriesRepositoriesInMemory } from "@modules/cars/repositories/in-memory/CateogoriesRepositoriesInMemory";
 
 import { CreateCategoryUseCases } from "./CreateCategoryUseCase"
 

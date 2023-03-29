@@ -1,8 +1,10 @@
+import "reflect-metadata"
 import { injectable ,inject} from "tsyringe";
-import { IUserRespository } from "../../repositories/IUsersRespository";
+import { IUserRespository } from "@modules/accounts/repositories/IUsersRespository";
 import {sign} from "jsonwebtoken"
 import {compare} from "bcrypt"
-import { AppError } from "../../../../errors/AppError";
+import { AppError } from "@shared/errors/AppError";
+
 
 interface IRequest{
     email: string;

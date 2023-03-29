@@ -4,7 +4,7 @@
     "username":"docker",
     "password": "ignite",
     "database":"rentx22",
-    "migrations": ["./src/databases/migrations/*.ts"],
+    "migrations": ["./src/shared/infra/typeorm/migrations/*.ts"],
     "entities": [
         "./src/modules/**/entities/*.ts"
       ],
@@ -12,7 +12,7 @@
       
   
     "cli": {
-        "migrationsDir": "./src/databases/migrations"
+        "migrationsDir": "./src/shared/infra/typeorm/migrations"
     }
 
 }
