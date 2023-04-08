@@ -36,7 +36,7 @@ class CreateCarsUseCase{
         )
 
         if(carsAlreadyExists){
-            throw new AppError("Car already exists")
+            throw new AppError("Car already exists!")
         }
         // try {
             

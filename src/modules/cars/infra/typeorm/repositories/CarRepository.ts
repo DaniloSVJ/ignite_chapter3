@@ -16,7 +16,16 @@ implements ICarRepository {
    constructor(){
         this.repository = getRepository(Cars)
     }
-    findById(id: string): Promise<Cars> {
+    async updateAvailable(id: string, available: boolean): Promise<void> {
+        await this.repository
+            .createQueryBuilder()
+            .update()
+            .set({available})
+            .where("id = :id")
+            .setParameters({id})
+            .execute()
+    }
+    async findById(id: string): Promise<Cars> {
         return this.repository.findOne(id)
     }
     async create({

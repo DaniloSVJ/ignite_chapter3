@@ -5,6 +5,7 @@ import { IRentalsRepository } from "@modules/rentals/repositories/IRentalsReposi
 import { AppError } from "@shared/errors/AppError";
 import { IDateProvider } from "@shared/container/providers/DateProvider/IDateProvider";
 import { inject, injectable } from "tsyringe";
+import { ICarRepository } from "@modules/cars/repositories/ICarRepositories";
 
 dayjs.extend(utc)
 
@@ -19,7 +20,9 @@ class CreateRentalsUseCases{
         @inject("RentalRepository")
         private rentalsRepository: IRentalsRepository,
         @inject("DayjsDateProvider")
-        private dateProvider: IDateProvider
+        private dateProvider: IDateProvider,
+        @inject("CarRepository")
+        private carsRepository: ICarRepository
     ){}
     async execute({
         user_id,
@@ -29,12 +32,12 @@ class CreateRentalsUseCases{
         const carUnavaliable = await this.rentalsRepository.findOpenRentalByCar(car_id)
         const minimoHour = 24
         if(carUnavaliable){
-            throw new AppError("Car is unavaliable")
+            throw new AppError("Car is unavaliable!")
         }
         const rentalOpenToUser = await this.rentalsRepository.findOpenRentalByUser(user_id)
 
         if(rentalOpenToUser){
-            throw new AppError("There's a rental in progress for users")
+            throw new AppError("There's a rental in progress for users!")
         }
 
         const datenow =  this.dateProvider.dateNow()
@@ -45,7 +48,7 @@ class CreateRentalsUseCases{
         )
         
         if(compare< minimoHour){
-            throw new AppError("Invalid return time")
+            throw new AppError("Invalid return time!")
         }
 
         const rentals = await this.rentalsRepository.create({
@@ -53,7 +56,8 @@ class CreateRentalsUseCases{
             car_id,
             expected_return_date
         })
-        console.log(compare)
+        
+        await this.carsRepository.updateAvailable(car_id,false)
         return rentals
     }
 }

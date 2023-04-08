@@ -4,8 +4,11 @@ import { IRentalsRepository } from "../../IRentalsRepository";
 
 
 class RentalRepositoryInMemory implements IRentalsRepository{
+   
+  
 
     rentals: Rentals[] = []
+    
     async findOpenRentalByCar(car_id: string): Promise<Rentals> {
         return this.rentals.find(rental=>rental.car_id===car_id && !rental.end_date)
     }
@@ -27,6 +30,16 @@ class RentalRepositoryInMemory implements IRentalsRepository{
         this.rentals.push(rental)
 
         return rental
+    }
+    async findById(id: string): Promise<Rentals> {
+        const rental = await this.rentals.find(rental=>rental.id===id)
+
+        return rental
+
+
+    }
+    async findByUser(user_id: string): Promise<Rentals[]> {
+        return this.rentals.filter((rental) => rental.user_id === user_id);
     }
 
 }

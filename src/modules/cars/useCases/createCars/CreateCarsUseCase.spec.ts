@@ -27,8 +27,6 @@ describe('Create Cars',()=>{
     })
 
     it("should be able to create a car with exists  license plate",async ()=>{
-       
-       expect(async()=>{
         await createCarsUseCase.execute({
             name:"Name car",
             description:"Description of cars",
@@ -39,7 +37,7 @@ describe('Create Cars',()=>{
             brand:"Fiaat",
             category_id:"category"
         })
-        await createCarsUseCase.execute({
+        await expect(createCarsUseCase.execute({
             name:"Name car2",
             description:"Description of cars",
             daily_rate:100,
@@ -50,7 +48,7 @@ describe('Create Cars',()=>{
             category_id:"category"
         })
 
-       }).rejects.toBeInstanceOf(AppError)
+       ).rejects.toEqual(new AppError("Car already exists!"))
         
     })
 

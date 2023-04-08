@@ -1,10 +1,15 @@
 import { v4 as uuidV4 } from "uuid"
 import { Column, CreateDateColumn, Entity, PrimaryColumn, JoinColumn, ManyToOne, ManyToMany, JoinTable, UpdateDateColumn } from "typeorm"
+import { Cars } from "@modules/cars/infra/typeorm/entities/Cars";
 
 @Entity("rentals")
 class Rentals {
     @PrimaryColumn()
     id: string;
+
+    @ManyToOne(()=>Cars)
+    @JoinColumn({name:'car_id'})
+    car: Cars
 
     @Column()
     car_id: string;

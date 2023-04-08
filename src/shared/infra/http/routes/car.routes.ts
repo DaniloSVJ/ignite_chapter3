@@ -22,6 +22,6 @@ carRoutes.get("/available", listAvailableCarsController.handle)
 carRoutes.use(ensureAuthenticated,ensureAdmin)
 carRoutes.post("/specification/:id", createCarSpecificationController.handle)
 carRoutes.post("/", createCarController.handle) 
-carRoutes.post("/imagens/:id", upload.array("images") ,uploadCarImagesController.handle) 
+carRoutes.post("/images/:id", upload.array("images") ,uploadCarImagesController.handle) 
 
 export {carRoutes}
