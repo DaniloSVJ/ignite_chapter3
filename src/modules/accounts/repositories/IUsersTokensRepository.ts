@@ -9,7 +9,7 @@ interface IUsersTokensRepository{
             refresh_token,
             user_id
         }:ICreateUserTokenDTOS):Promise<UsersToken>;
-        findByUserIdAndRefreshToekn(user_id:string,refresh_token:string):Promise<UsersToken>;
+        findByUserIdAndRefreshToken(user_id:string,refresh_token:string):Promise<UsersToken>;
         deleteById(id:string):Promise<void>
 }       
 

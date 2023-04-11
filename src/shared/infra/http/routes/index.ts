@@ -8,11 +8,13 @@ import { userRoutes } from './user.routes'
 import { authenticateRoutes } from './authenticate.routes'
 import { carRoutes } from './car.routes'
 import {rentalRoutes} from './rental.routes'
+import { passwordRoutes } from "./password.routes"
 
 const router = Router()
 
 
 router.use(authenticateRoutes)
+router.use("/password",passwordRoutes)
 router.use("/users",userRoutes)
 router.use("/categories",categoriesRoutes)
 router.use("/specification",specificationRoutes)

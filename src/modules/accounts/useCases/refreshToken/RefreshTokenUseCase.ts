@@ -26,7 +26,7 @@ class RefreshTokenUseCase{
         const email = decode.email
         const {expires_in_refresh_token,expires_refresh_token_days,expires_token,secret_refresh_token,secret_token} = auth
         const userToken = await this.usersTokensRepository
-        .findByUserIdAndRefreshToekn(
+        .findByUserIdAndRefreshToken(
             user_id,
             token
         )
